@@ -21,8 +21,40 @@
 <h2>Task4</h2>
 <h2>Task5</h2>
 <p>Webots Tutorial 1 ~3 (HW3)</p>
-<p>5.請詳細說明如何採手動方式在 Webots 建立下列場景: 建立 Webots 桌上籃球遊戲機模擬系統</p>
-<p></p><h2>Task6</h2>
+<p>問題5.</p>
+<p>請詳細說明如何採手動方式在 Webots 建立下列場景: 建立 Webots 桌上籃球遊戲機模擬系統</p>
+<ol data-end="234" data-start="149">
+<li data-end="196" data-start="149">建立新的 Webots 世界：打開 Webots，選擇 <strong data-end="195" data-start="165">File &gt; New World</strong></li>
+<li data-end="234" data-start="197">選擇 <strong data-end="224" data-start="203">空白世界（Empty World）</strong>，確保場景從零開始</li>
+<li data-end="341" data-start="276">添加桌面：在 <strong data-end="300" data-start="281">場景樹（Scene Tree）</strong>，右鍵點擊 <code data-end="317" data-start="306">WorldInfo</code>，選擇 <strong data-end="340" data-start="321">Add New &gt; Solid</strong>。</li>
+<li data-end="384" data-start="342">設置名稱為 <code data-end="368" data-start="351">BasketballTable</code>，確保它是靜態物件（不會移動）。</li>
+<li data-end="509" data-start="385">在 <code data-end="400" data-start="390">geometry</code> 選擇 <code data-end="409" data-start="404">Box</code>：<br/><code data-end="440" data-start="416">size = (1.2, 0.8, 0.1)</code>（設置長 1.2m，寬 0.8m，厚度 0.1m）。<br/><code data-end="500" data-start="472">translation = (0, 0, 0.05)</code>（使其稍微浮起）。</li>
+<li data-end="592" data-start="510">在 <code data-end="527" data-start="515">appearance</code>，添加 <code data-end="541" data-start="531">Material</code>：<br/><code data-end="580" data-start="548">diffuseColor = (0.6, 0.4, 0.2)</code>（類似木製桌子的顏色）。</li>
+<li data-end="909" data-start="636">
+<p data-end="656" data-start="639"><strong data-end="656" data-start="639">籃板（Backboard）</strong></p>
+右鍵 <code data-end="682" data-start="665">BasketballTable</code>，選擇 <strong data-end="705" data-start="686">Add New &gt; Solid</strong>。<br/>設定 <code data-end="733" data-start="715">name = Backboard</code>，<code data-end="750" data-start="734">geometry = Box</code>：<code data-end="784" data-start="759">size = (0.4, 0.01, 0.3)</code>（寬 40cm，厚 1cm，高 30cm）。<br/><code data-end="845" data-start="814">translation = (0, -0.35, 0.3)</code>（放在桌子後面）。<br/>在 <code data-end="874" data-start="862">appearance</code> 設置 <code data-end="904" data-start="878">diffuseColor = (1, 1, 1)</code>（白色）。</li>
+<li data-end="1074" data-start="911">
+<p data-end="926" data-start="914"><strong data-end="926" data-start="914">籃框（Hoop）</strong></p>
+右鍵 <code data-end="946" data-start="935">Backboard</code>，選擇 <strong data-end="969" data-start="950">Add New &gt; Shape</strong>，選擇 <code data-end="980" data-start="973">Torus</code>（圓環）。設置 <code data-end="1009" data-start="994">radius = 0.07</code>，<code data-end="1029" data-start="1010">thickness = 0.005</code>，<code data-end="1062" data-start="1030">translation = (0, -0.02, -0.1)</code> 讓籃框固定在籃板下方。</li>
+<li data-end="1180" data-start="1076">
+<p data-end="1090" data-start="1079"><strong data-end="1090" data-start="1079">籃網（Net）</strong></p>
+由於 Webots 沒有內建的網狀物，我們可以用細圓柱來模擬：在 <code data-end="1141" data-start="1135">Hoop</code> 內，添加多個 <code data-end="1159" data-start="1149">Cylinder</code> 作為網柱（直徑 1cm，高 10cm）。</li>
+<li data-end="1180" data-start="1076">
+<h4 data-end="1215" data-start="1187"><strong data-end="1215" data-start="1190">添加籃球（Basketball）</strong></h4>
+在 <code data-end="1233" data-start="1221">Scene Tree</code>，右鍵 <code data-end="1248" data-start="1237">WorldInfo</code>，選擇 <strong data-end="1271" data-start="1252">Add New &gt; Solid</strong>。<br/>設定名稱為 <code data-end="1294" data-start="1282">Basketball</code>，在 <code data-end="1307" data-start="1297">geometry</code> 選擇 <code data-end="1319" data-start="1311">Sphere</code>：<code data-end="1341" data-start="1326">radius = 0.07</code>（籃球的大小）。<code data-end="1385" data-start="1355">translation = (0, 0.2, 0.07)</code>（擺放在桌面上）。<br/>在 <code data-end="1409" data-start="1400">physics</code> 啟用 <code data-end="1428" data-start="1413">mass = 0.6 kg</code>，設置彈性係數：<code data-end="1456" data-start="1442">bounce = 0.8</code>（讓籃球更有彈性）。<br/>在 <code data-end="1484" data-start="1472">appearance</code> 設置 <code data-end="1516" data-start="1488">diffuseColor = (1, 0.5, 0)</code>（橙色）</li>
+<li data-end="1180" data-start="1076">增加發球裝置：在 <code data-end="1574" data-start="1562">Scene Tree</code>，右鍵 <code data-end="1589" data-start="1578">WorldInfo</code>，選擇 <strong data-end="1612" data-start="1593">Add New &gt; Solid</strong>。<br/>設定名稱為 <code data-end="1633" data-start="1623">Launcher</code>，在 <code data-end="1646" data-start="1636">geometry</code> 選擇 <code data-end="1655" data-start="1650">Box</code>：<br/><code data-end="1687" data-start="1662">size = (0.1, 0.2, 0.05)</code>。<br/><code data-end="1724" data-start="1694">translation = (0, 0.3, 0.05)</code>（放置在桌面前方）。<br/>添加 <strong data-end="1756" data-start="1741">LinearMotor</strong>：<br/>右鍵 <code data-end="1776" data-start="1766">Launcher</code>，選擇 <strong data-end="1805" data-start="1780">Add New &gt; LinearMotor</strong>。<br/>設定 <code data-end="1829" data-start="1815">maxForce = 5</code>，確保可以推動籃球。</li>
+<li data-end="1180" data-start="1076">
+<h4 data-end="1866" data-start="1846">設定遊戲物理特性</h4>
+<strong data-end="1901" data-start="1870">檢查所有 <code data-end="1884" data-start="1877">Solid</code> 是否啟用 <code data-end="1899" data-start="1890">physics</code></strong>（除 <code data-end="1921" data-start="1904">BasketballTable</code>、<code data-end="1933" data-start="1922">Backboard</code>）。<br/><strong data-end="1957" data-start="1939">確保籃球與籃框的碰撞層級正確</strong>：<br/><code data-end="1981" data-start="1964">contactMaterial</code> 設置適當摩擦值，以便籃球有真實滾動效果。<br/><strong data-end="2043" data-start="2006">發球機 <code data-end="2022" data-start="2012">Launcher</code> 必須包含 <code data-end="2041" data-start="2028">LinearMotor</code></strong>，否則無法發射球。</li>
+<li data-end="1180" data-start="1076">
+<h4 data-end="2076" data-start="2059"><strong data-end="2076" data-start="2062">測試並調整</strong></h4>
+在 <strong data-end="2098" data-start="2082">工具列（Toolbar）</strong>，點擊 <strong data-end="2122" data-start="2102">Simulation &gt; Run</strong> 開始測試。<br/>如果籃球未能進入籃框：調整 <code data-end="2162" data-start="2152">Launcher</code> 的 <code data-end="2175" data-start="2165">maxForce</code> 和 <code data-end="2188" data-start="2178">velocity</code>。改變 <code data-end="2210" data-start="2198">Basketball</code> 的 <code data-end="2219" data-start="2213">mass</code> 和 <code data-end="2230" data-start="2222">bounce</code>。<br/><strong data-end="2256" data-start="2235">加入 Camera 來觀察遊戲過程</strong>：
+<ul data-end="2365" data-start="2261">
+<li data-end="2317" data-start="2261">在 <code data-end="2277" data-start="2265">Scene Tree</code>，右鍵 <code data-end="2292" data-start="2281">WorldInfo</code>，選擇 <strong data-end="2316" data-start="2296">Add New &gt; Camera</strong>。</li>
+<li data-end="2365" data-start="2321">設置 <code data-end="2356" data-start="2326">translation = (0, -0.6, 0.6)</code> 來模擬玩家視角。</li>
+</ul>
+</li>
+</ol><h2>Task6</h2>
 <h1>Homework</h1>
 <p>作業 (30%)</p>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
